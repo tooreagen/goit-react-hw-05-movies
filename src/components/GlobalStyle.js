@@ -41,4 +41,14 @@ img {
   max-width: 100%;
   height: auto;
 }
-`
+
+a{
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+
+    :hover, :focus {
+      color: grey;
+    }
+}
+`;
