@@ -41,3 +41,7 @@ export const AddInfo = styled.div`
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 `;
+
+export const MovieImg = styled.img`
+  min-width: 200px;
+`;

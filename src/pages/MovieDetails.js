@@ -11,6 +11,7 @@ import {
   MovieBlock,
   GenresItem,
   AddInfo,
+  MovieImg,
 } from './Styled/MoviesDetails.styled';
 
 const MovieDetails = () => {
@@ -44,11 +45,17 @@ const MovieDetails = () => {
         <div>
           <MovieBlock>
             <div>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                height={250}
-                alt={'Movie poster'}
-              />
+              {movie.poster_path ? (
+                <MovieImg
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={'Movie poster'}
+                />
+              ) : (
+                <MovieImg
+                  src={require(`../images/nophoto.png`)}
+                  alt={'Movie poster not found'}
+                />
+              )}
             </div>
             <div>
               <h2>

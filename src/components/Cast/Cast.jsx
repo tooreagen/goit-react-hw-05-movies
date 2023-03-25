@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getMovies from 'api/getMovies';
-import Loading from 'components/Loading/Loading';
 import { CastList, CastItemThumb } from './Cast.styled';
 
 const Cast = () => {
@@ -34,24 +33,30 @@ const Cast = () => {
             return (
               <CastItemThumb>
                 <li key={item.cast_id}>
-                  {item.profile_path ? (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
-                      alt={'Actor poster'}
-                    />
-                  ) : (
-                    <img src={`./src/images/nophoto.png`} alt={'Actor poster'} />
-                  )}
-
-                  <p>{item.name}</p>
-                  <p>{item.character}</p>
+                  <div>
+                    {item.profile_path ? (
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
+                        alt={'Actor poster'}
+                      />
+                    ) : (
+                      <img
+                        src={require(`../../images/nophoto.png`)}
+                        alt={'Actor poster not found'}
+                      />
+                    )}
+                  </div>
+                  <div>
+                    <p>{item.name}</p>
+                    <p>{item.character}</p>
+                  </div>
                 </li>
               </CastItemThumb>
             );
           })}
         </CastList>
       ) : (
-        <Loading />
+        <p>We don`t have any cast for this movie</p>
       )}
     </>
   );

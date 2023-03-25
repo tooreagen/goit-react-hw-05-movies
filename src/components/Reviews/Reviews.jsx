@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getMovies from 'api/getMovies';
 import { ReviewsList, ReviewsItem, ReviewsAuthor } from './Reviews.styled';
-import Loading from 'components/Loading/Loading';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -40,7 +39,7 @@ const Reviews = () => {
           })}
         </ReviewsList>
       ) : (
-        <Loading />
+        <p>We don`t have any reviews for this movie</p>
       )}
     </>
   );

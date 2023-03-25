@@ -28,8 +28,3 @@ export const App = () => {
     </>
   );
 };
-
-//заглушка без фото http://localhost:3000/goit-react-hw-05-movies/movies/280/cast
-//посмотреть структура кода, main, footer, header/
-
-//порівняти з відео мою прогу
