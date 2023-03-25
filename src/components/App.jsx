@@ -26,3 +26,13 @@ export const App = () => {
     </>
   );
 };
+
+//заглушка без фото http://localhost:3000/goit-react-hw-05-movies/movies/280/cast
+//посмотреть структура кода, main, footer, header/
+//We don't have any reviews for this movie
+//propTypes
+//позабирати всы помилки у консолымVSCode
+
+//порівняти з відео мою прогу
+//центрування конетнту
+///style active на кнопку

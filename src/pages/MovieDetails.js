@@ -1,6 +1,6 @@
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import getMovies from 'api/getMovies';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Loading from 'components/Loading/Loading';
 import {
@@ -19,8 +19,9 @@ const MovieDetails = () => {
   const [fetchError, setFetchError] = useState(null);
   const [movie, setMovie] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/products';
+  const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
 
+console.log(location);
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -35,7 +36,7 @@ const MovieDetails = () => {
 
   return (
     <main>
-      <BackLink to={backLinkHref}>{'< '}Go back</BackLink>
+      <BackLink to={backLinkLocationRef.current}>{'< '}Go back</BackLink>
       {movie ? (
         <div>
           <MovieBlock>

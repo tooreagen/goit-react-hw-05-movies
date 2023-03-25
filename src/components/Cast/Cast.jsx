@@ -22,18 +22,13 @@ const Cast = () => {
     fetchCastMovie();
   }, []);
 
-  useEffect(() => {
-    console.log(cast);
-    cast.map(item => { console.log(item.id) });
-  }, [cast]);
-
   return (
     <>
       {cast ? (
         <CastList>
           {cast.map(item => {
             return (
-              <li key={item.id}>
+              <li key={item.cast_id}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
                   width={200}
