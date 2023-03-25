@@ -40,7 +40,7 @@ const Cast = () => {
                       alt={'Actor poster'}
                     />
                   ) : (
-                    <img src={`src/images/nophoto.png`} alt={'Actor poster'} />
+                    <img src={`./src/images/nophoto.png`} alt={'Actor poster'} />
                   )}
 
                   <p>{item.name}</p>
