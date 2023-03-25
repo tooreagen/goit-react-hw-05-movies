@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getMovies from 'api/getMovies';
-import Loading from 'components/Loading/Loading';
 import { ReviewsList, ReviewsItem, ReviewsAuthor } from './Reviews.styled';
-
+import Loading from 'components/Loading/Loading';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -21,11 +20,15 @@ const Reviews = () => {
     };
 
     fetchReviewsMovie();
-  }, []);
+  }, [path]);
+
+  useEffect(() => {
+    console.log(fetchError);
+  }, [fetchError]);
 
   return (
     <>
-      {reviews ? (
+      {reviews.length ? (
         <ReviewsList>
           {reviews.map(item => {
             return (

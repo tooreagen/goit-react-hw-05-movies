@@ -4,7 +4,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { TrendingHeader } from './Styled/Home.styled';
 import { MoviesList, MoviesItem } from './Styled/Movies.styled';
 
-
 const Home = () => {
   const [trendingMovie, setTrendingMovie] = useState([]);
   const [fetchError, setFetchError] = useState(null);
@@ -24,6 +23,10 @@ const Home = () => {
     fetchMovies();
   }, []);
 
+  useEffect(() => {
+    console.log(fetchError);
+  }, [fetchError]);
+
   return (
     <>
       <TrendingHeader>Trending today</TrendingHeader>
@@ -31,7 +34,9 @@ const Home = () => {
         {trendingMovie.map(item => {
           return (
             <MoviesItem key={item.id}>
-              <NavLink to={`movies/${item.id}`} state={{ from: location }} >{item.title}</NavLink>
+              <NavLink to={`movies/${item.id}`} state={{ from: location }}>
+                {item.title}
+              </NavLink>
             </MoviesItem>
           );
         })}

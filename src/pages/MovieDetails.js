@@ -31,7 +31,11 @@ const MovieDetails = () => {
     };
 
     fetchMovies();
-  }, []);
+  }, [path]);
+
+  useEffect(() => {
+    console.log(fetchError);
+  }, [fetchError]);
 
   return (
     <main>
@@ -43,6 +47,7 @@ const MovieDetails = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 height={250}
+                alt={'Movie poster'}
               />
             </div>
             <div>
@@ -76,7 +81,7 @@ const MovieDetails = () => {
             </ul>
           </AddInfo>
           <div>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
               <Outlet />
             </Suspense>
           </div>

@@ -41,6 +41,10 @@ const Movies = () => {
     fetchMovies();
   }, [query]);
 
+    useEffect(() => {
+      console.log(fetchError);
+    }, [fetchError]);
+
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;

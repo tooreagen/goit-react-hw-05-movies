@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getMovies from 'api/getMovies';
 import Loading from 'components/Loading/Loading';
-import { CastList } from './Cast.styled';
+import { CastList, CastItemThumb } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -20,22 +20,33 @@ const Cast = () => {
     };
 
     fetchCastMovie();
-  }, []);
+  }, [path]);
+
+  useEffect(() => {
+    console.log(fetchError);
+  }, [fetchError]);
 
   return (
     <>
-      {cast ? (
+      {cast.length ? (
         <CastList>
           {cast.map(item => {
             return (
-              <li key={item.cast_id}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
-                  width={200}
-                />
-                <p>{item.name}</p>
-                <p>{item.character}</p>
-              </li>
+              <CastItemThumb>
+                <li key={item.cast_id}>
+                  {item.profile_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
+                      alt={'Actor poster'}
+                    />
+                  ) : (
+                    <img src={`src/images/nophoto.png`} alt={'Actor poster'} />
+                  )}
+
+                  <p>{item.name}</p>
+                  <p>{item.character}</p>
+                </li>
+              </CastItemThumb>
             );
           })}
         </CastList>

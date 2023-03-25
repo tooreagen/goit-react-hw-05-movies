@@ -15,6 +15,8 @@ export const Header = styled.header`
 export const Navigation = styled.nav`
   display: flex;
   gap: 12px;
+  
+  
 `;
 
 export const NavigationLink = styled(NavLink)`
@@ -22,4 +24,9 @@ export const NavigationLink = styled(NavLink)`
   font-weight: 700;
   background-color: lightgray;
   border-radius: 5px;
+
+  &.active {
+    background-color: lightcoral;
+  }
 `;
+
