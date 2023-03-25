@@ -1,6 +1,6 @@
 import getMovies from 'api/getMovies';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { TrendingHeader } from './Styled/Home.styled';
 import { MoviesList, MoviesItem } from './Styled/Movies.styled';
 
@@ -9,6 +9,7 @@ const Home = () => {
   const [trendingMovie, setTrendingMovie] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const path = 'trending/movie/week';
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -30,7 +31,7 @@ const Home = () => {
         {trendingMovie.map(item => {
           return (
             <MoviesItem key={item.id}>
-              <NavLink to={`movies/${item.id}`}>{item.title}</NavLink>
+              <NavLink to={`movies/${item.id}`} state={{ from: location }} >{item.title}</NavLink>
             </MoviesItem>
           );
         })}

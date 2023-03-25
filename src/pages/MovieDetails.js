@@ -1,6 +1,6 @@
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import getMovies from 'api/getMovies';
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Loading from 'components/Loading/Loading';
 import {
@@ -21,7 +21,6 @@ const MovieDetails = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
 
-console.log(location);
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -77,7 +76,9 @@ console.log(location);
             </ul>
           </AddInfo>
           <div>
-            <Outlet />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
           </div>
         </div>
       ) : (
